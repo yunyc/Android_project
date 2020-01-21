@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AlarmActivity"></activity>
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/title_activity_register"></activity>
+            android:label="@string/title_activity_register" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -21,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".ui.alarm.AlarmReciver" />
+
+        <service
+            android:name=".ui.alarm.RingtonePlayingService"
+            android:enabled="true" />
     </application>
 
 </manifest>
