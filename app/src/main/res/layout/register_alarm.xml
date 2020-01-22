@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView99"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="알람"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <EditText
+                android:id="@+id/schedule_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <Button
+                android:id="@+id/alarm_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="알람 시간" />
+
+            <Button
+                android:id="@+id/music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="벨소리" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="267dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="진동" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="반복"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/week"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="주말" />
+
+                <Button
+                    android:id="@+id/non_week"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="주중" />
+
+                <Button
+                    android:id="@+id/all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="매일" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:orientation="horizontal">
+
+                <ToggleButton
+                    android:id="@+id/checkBox1"
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/check_state"
+                    android:textColor="#ffffff"
+                    android:textFontWeight="600"
+                    android:textOff="일"
+                    android:textOn="일"
+                    tools:layout_conversion_absoluteHeight="54dp"
+                    tools:layout_conversion_absoluteWidth="54dp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="97dp" />
+
+                <ToggleButton
+                    android:id="@+id/checkBox2"
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/check_state"
+                    android:textColor="#ffffff"
+                    android:textFontWeight="600"
+                    android:textOff="월"
+                    android:textOn="월"
+                    tools:layout_conversion_absoluteHeight="54dp"
+                    tools:layout_conversion_absoluteWidth="54dp"
+                    tools:layout_editor_absoluteX="70dp"
+                    tools:layout_editor_absoluteY="97dp" />
+
+                <ToggleButton
+                    android:id="@+id/checkBox3"
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/check_state"
+                    android:textColor="#ffffff"
+                    android:textFontWeight="600"
+                    android:textOff="화"
+                    android:textOn="화"
+                    tools:layout_conversion_absoluteHeight="54dp"
+                    tools:layout_conversion_absoluteWidth="54dp"
+                    tools:layout_editor_absoluteX="124dp"
+                    tools:layout_editor_absoluteY="97dp" />
+
+                <ToggleButton
+                    android:id="@+id/checkBox4"
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/check_state"
+                    android:textColor="#ffffff"
+                    android:textFontWeight="600"
+                    android:textOff="수"
+                    android:textOn="수"
+                    tools:layout_conversion_absoluteHeight="54dp"
+                    tools:layout_conversion_absoluteWidth="54dp"
+                    tools:layout_editor_absoluteX="178dp"
+                    tools:layout_editor_absoluteY="97dp" />
+
+                <ToggleButton
+                    android:id="@+id/checkBox5"
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/check_state"
+                    android:textColor="#ffffff"
+                    android:textFontWeight="600"
+                    android:textOff="목"
+                    android:textOn="목"
+                    tools:layout_conversion_absoluteHeight="54dp"
+                    tools:layout_conversion_absoluteWidth="54dp"
+                    tools:layout_editor_absoluteX="232dp"
+                    tools:layout_editor_absoluteY="97dp" />
+
+                <ToggleButton
+                    android:id="@+id/checkBox6"
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/check_state"
+                    android:textColor="#ffffff"
+                    android:textFontWeight="600"
+                    android:textOff="금"
+                    android:textOn="금"
+                    tools:layout_conversion_absoluteHeight="54dp"
+                    tools:layout_conversion_absoluteWidth="54dp"
+                    tools:layout_editor_absoluteX="286dp"
+                    tools:layout_editor_absoluteY="97dp" />
+
+                <ToggleButton
+                    android:id="@+id/checkBox7"
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/check_state"
+                    android:textColor="#ffffff"
+                    android:textFontWeight="600"
+                    android:textOff="토"
+                    android:textOn="토"
+                    tools:layout_conversion_absoluteHeight="54dp"
+                    tools:layout_conversion_absoluteWidth="54dp"
+                    tools:layout_editor_absoluteX="341dp"
+                    tools:layout_editor_absoluteY="97dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/memo_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="메모 추가" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

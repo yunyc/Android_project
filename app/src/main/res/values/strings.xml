@@ -4,4 +4,7 @@
     <string name="title_memo">메모</string>
     <string name="title_schedule">일정</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_music">MusicActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

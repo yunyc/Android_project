@@ -1,13 +1,19 @@
 package com.example.myapplication;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -26,10 +32,15 @@ public class MainActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
 
+    String[] permission_list = {
+            Manifest.permission.READ_EXTERNAL_STORAGE
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        checkPermission();
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -76,6 +87,41 @@ public class MainActivity extends AppCompatActivity {
         // Toast 보여주기 (알람 시간 표시)
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         Toast.makeText(this, "Alarm : " + format.format(calendar.getTime()), Toast.LENGTH_SHORT).show();
+    }
+
+    public void checkPermission(){
+
+        //현재 안드로이드 버전이 6.0미만이면 메서드를 종료한다.
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            return;
+
+        for(String permission : permission_list){
+            //권한 허용 여부를 확인한다.
+            int chk = checkCallingOrSelfPermission(permission);
+
+            if(chk == PackageManager.PERMISSION_DENIED){
+
+                ActivityCompat.requestPermissions(this, permission_list, 0);
+            }
+        }
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==0) {
+
+            for(int i=0; i<grantResults.length; i++) {
+                //허용됬다면
+                if(grantResults[i]==PackageManager.PERMISSION_GRANTED){ }
+                else {
+                    Toast.makeText(this,"앱권한설정하세요", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }
+        }
     }
 
 
