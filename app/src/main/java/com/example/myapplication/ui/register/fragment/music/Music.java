@@ -1,6 +1,4 @@
-package com.example.myapplication.ui.alarm.music;
-
-import java.util.ArrayList;
+package com.example.myapplication.ui.register.fragment.music;
 
 import android.content.ContentUris;
 import android.content.Context;
@@ -8,17 +6,58 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
+import java.util.ArrayList;
 
-public class LoadMusic {
+public class Music {
 
-    private Context                 context;
-    private ArrayList<Music>         musicList;
+    private Uri musicUri;
+    private String albumUri;
+    private String musicTitle;
+    private String singer;
 
-    public LoadMusic(Context context){
+    private Context context;
+    private ArrayList<Music> musicList;
+
+    public Music() {}
+
+    public Music(Context context) {
 
         this.context = context;
         musicList = new ArrayList<Music>();
         getMusicInfo();
+
+    }
+
+    public Uri getMusicUri() {
+        return musicUri;
+    }
+
+    public void setMusicUri(Uri musicUri) {
+        this.musicUri = musicUri;
+    }
+
+    public String getAlbumUri() {
+        return albumUri;
+    }
+
+    public void setAlbumUri(String albumUri) {
+        this.albumUri = albumUri;
+    }
+
+    public String getMusicTitle() {
+        return musicTitle;
+    }
+
+    public void setMusicTitle(String musicTitle) {
+        this.musicTitle = musicTitle;
+    }
+
+    public String getSinger() {
+        return singer;
+    }
+
+    public void setSinger(String singer) {
+        this.singer = singer;
     }
 
     public ArrayList<Music> getMusicList() {
@@ -84,4 +123,5 @@ public class LoadMusic {
         return uri;
     }
 }
+
 

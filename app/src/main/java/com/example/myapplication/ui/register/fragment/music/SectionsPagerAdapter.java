@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.alarm.music;
+package com.example.myapplication.ui.register.fragment.music;
 
 import android.content.Context;
 
@@ -28,8 +28,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        // Return a MusicFragment (defined as a static inner class below).
+        return MusicFragment.newInstance(position + 1);
     }
 
     @Nullable

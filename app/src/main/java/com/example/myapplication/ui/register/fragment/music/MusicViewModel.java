@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.alarm.music;
+package com.example.myapplication.ui.register.fragment.music;
 
 import android.content.Context;
 
@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PageViewModel extends ViewModel {
+public class MusicViewModel extends ViewModel {
 
     private MutableLiveData<Integer> mIndex = new MutableLiveData<>();
     private LiveData<String> mText = Transformations.map(mIndex, new Function<Integer, String>() {
@@ -27,10 +27,27 @@ public class PageViewModel extends ViewModel {
 
     public LiveData<ArrayList<Music>> getMusic(Context context) {
 
-        LoadMusic loadMusic = new LoadMusic(context);
+        Music music = new Music(context);
 
         MutableLiveData mData = new MutableLiveData<>();
-        mData.setValue(loadMusic.getMusicList());
+        mData.setValue(music.getMusicList());
+        return mData;
+    }
+
+    public LiveData<ArrayList<Music>> getSearchMusic(Context context, String keyword) {
+
+        Music music = new Music(context);
+        List<Music> searchList = new ArrayList<Music>();
+
+        MutableLiveData mData = new MutableLiveData<>();
+
+        for (Music item :music.getMusicList()) {
+
+            if (item.getMusicTitle().startsWith(keyword)) {
+                searchList.add(item);
+            }
+        }
+        mData.setValue(searchList);
         return mData;
     }
 }

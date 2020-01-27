@@ -1,42 +1,51 @@
-package com.example.myapplication.ui.memo;
+package com.example.myapplication.ui.main.fragment.memo;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 import com.example.myapplication.R;
-import com.example.myapplication.RegisterActivity;
+import com.example.myapplication.database.AppDatabase;
+import com.example.myapplication.database.memo.Memo;
+import com.example.myapplication.ui.register.activity.RegisterActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class MemoFragment extends Fragment implements View.OnClickListener {
 
+    private AppDatabase db = AppDatabase.getInstance(getContext());
     private MemoViewModel memoViewModel;
+    private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
 
+        View root = inflater.inflate(R.layout.fragment_memo, container, false);
+
+        recyclerView = (RecyclerView) root.findViewById(R.id.memo_recycler);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
         memoViewModel =
                 ViewModelProviders.of(this).get(MemoViewModel.class);
 
-
-        View root = inflater.inflate(R.layout.fragment_memo, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-
-
-        memoViewModel.getText().observe(this, new Observer<String>() {
+        memoViewModel.getData(db.memoDao()).observe(this, new Observer<List<Memo>>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onChanged(List<Memo> memos) {
+                MemoAdapter memoAdapter = new MemoAdapter(memos);
+                recyclerView.setAdapter(memoAdapter);
             }
         });
 

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.ui.main.activity;
 
 import android.Manifest;
 import android.app.AlarmManager;
@@ -7,21 +7,20 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.myapplication.ui.alarm.AlarmReciver;
+import com.example.myapplication.R;
+import com.example.myapplication.ui.main.fragment.alarm.AlarmReceiver;
+import com.example.myapplication.ui.main.fragment.alarm.AlarmSetting;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,12 +28,12 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AlarmManager alarmManager;
-    private PendingIntent pendingIntent;
-
     String[] permission_list = {
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
+
+    public static String date = Calendar.YEAR + "." + Calendar.MONTH + "." + Calendar.DATE;
+    public static String time = Calendar.HOUR + "." + Calendar.MINUTE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,43 +50,17 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        this.alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        start();
+        //AlarmSetting alarm = new AlarmSetting(this);
+        //alarm.setCalendar(14, 5);
+        //alarm.start(1);
 
+        //alarm.setCalendar(14, 6);
+        //alarm.start(2);
 
-
+        //alarm.stop(1);
 
     }
 
-    /* 알람 시작 */
-    private void start() {
-        // 시간 설정
-        Calendar calendar = Calendar.getInstance();
-
-        calendar.set(Calendar.HOUR_OF_DAY, 21);
-        calendar.set(Calendar.MINUTE, 22);
-        calendar.set(Calendar.SECOND, 0);
-
-        // 현재시간보다 이전이면
-        if (calendar.before(Calendar.getInstance())) {
-            // 다음날로 설정
-            calendar.add(Calendar.DATE, 1);
-        }
-
-        // Receiver 설정
-        Intent intent = new Intent(this, AlarmReciver.class);
-        // state 값이 on 이면 알람시작, off 이면 중지
-        intent.putExtra("state", "on");
-
-        this.pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        // 알람 설정
-        this.alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-
-        // Toast 보여주기 (알람 시간 표시)
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        Toast.makeText(this, "Alarm : " + format.format(calendar.getTime()), Toast.LENGTH_SHORT).show();
-    }
 
     public void checkPermission(){
 

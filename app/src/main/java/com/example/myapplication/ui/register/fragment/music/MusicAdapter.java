@@ -1,30 +1,26 @@
-package com.example.myapplication.ui.alarm.music;
-import android.content.ClipData;
+package com.example.myapplication.ui.register.fragment.music;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Checkable;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.database.memo.Memo;
 
 import java.util.List;
 
 public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> {
 
     private List<Music> mData;
-    private boolean isChecked;
     private int selected;
+    private String selectedTitle;
 
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
-    public class ViewHolder extends RecyclerView.ViewHolder implements Checkable {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
         RadioButton radioButton;
 
         ViewHolder(View itemView) {
@@ -36,25 +32,6 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
             Log.d("ddd", "ViewHolder");
         }
 
-        @Override
-        public void setChecked(boolean checked) {
-            if (isChecked != checked) {
-                isChecked = checked;
-
-            } else {
-
-            }
-        }
-
-        @Override
-        public boolean isChecked() {
-            return isChecked;
-        }
-
-        @Override
-        public void toggle() {
-            setChecked(!isChecked);
-        }
     }
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
@@ -89,6 +66,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
 
         if (selected - 1 == position) {
             holder.radioButton.setChecked(true);
+            selectedTitle = mData.get(position).getMusicTitle();
         }
 
     }
@@ -97,6 +75,10 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public String getSelectedTitle() {
+        return selectedTitle;
     }
 
 

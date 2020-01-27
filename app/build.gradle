@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.myapplication"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -24,6 +25,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    dataBinding {
+        enabled = true
+    }
+
 
 
 }
@@ -43,8 +49,13 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:29.0.0'
 
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha03'
-
+    implementation 'com.jaredrummler:colorpicker:1.1.0'
+    implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
+    kapt 'com.android.databinding:compiler:2.3.1'
+    kapt "android.arch.persistence.room:compiler:1.1.1"
 }
+
+
 
 dependencies {
     def room_version = "2.2.2"
@@ -96,4 +107,9 @@ dependencies {
     implementation 'com.google.android.material:material:+'
     implementation 'androidx.constraintlayout:constraintlayout:+'
     implementation 'androidx.lifecycle:lifecycle-extensions:+'
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:+'
+    implementation 'androidx.constraintlayout:constraintlayout:+'
 }

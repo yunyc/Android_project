@@ -1,6 +1,5 @@
-package com.example.myapplication.ui.alarm;
+package com.example.myapplication.ui.main.fragment.alarm;
 
-import android.app.AlarmManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,17 +14,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.RegisterActivity;
-import com.example.myapplication.database.Injection;
-import com.example.myapplication.database.memo.Memo;
+import com.example.myapplication.database.AppDatabase;
+import com.example.myapplication.database.alarm.Alarm;
+import com.example.myapplication.ui.register.activity.RegisterActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class AlarmFragment extends Fragment implements View.OnClickListener{
 
-    private Injection injection;
-
+    private AppDatabase db;
     private AlarmViewModel alarmViewModel;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -33,7 +31,8 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        injection = Injection.getInjection(getContext());
+
+        db = AppDatabase.getInstance(getContext());
 
         View root = inflater.inflate(R.layout.fragment_alarm, container, false);
 
@@ -45,18 +44,19 @@ public class AlarmFragment extends Fragment implements View.OnClickListener{
         alarmViewModel =
                 ViewModelProviders.of(this).get(AlarmViewModel.class);
 
-        alarmViewModel.getData(injection.getMemoDao()).observe(this, new Observer<List<Memo>>() {
+        alarmViewModel.getData(db.alarmDao()).observe(this, new Observer<List<Alarm>>() {
                     @Override
-                    public void onChanged(List<Memo> memos) {
-                        MyAdapter myAdapter = new MyAdapter(memos);
-                        recyclerView.setAdapter(myAdapter);
+                    public void onChanged(List<Alarm> alarms) {
+                        AlarmAdapter alarmAdapter = new AlarmAdapter(alarms);
+                        recyclerView.setAdapter(alarmAdapter);
                     }
                 });
 
         FloatingActionButton fab = (FloatingActionButton) root.findViewById(R.id.alarm_fab);
         fab.setOnClickListener(this);
 
-
+        //binding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_alarm);
+        //binding.setAlarm(alarmViewModel);
 
         return root;
     }
