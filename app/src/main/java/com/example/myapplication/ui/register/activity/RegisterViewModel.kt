@@ -26,7 +26,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class RegisterViewModel :BaseObservable {
+class RegisterViewModel :ViewModel() {
 
     var loopDay :ArrayList<String> = ArrayList<String>()
 
@@ -38,11 +38,10 @@ class RegisterViewModel :BaseObservable {
     var alarm = Alarm()
     var schedule = Schedule()
 
-    constructor() {}
-
 
     fun insertMemo(memoDao: MemoDao) {
         memoDao.insertOrUpdateMemo(memo)
+
     }
 
     fun insertSchedule(scheduleDao: ScheduleDao) {
@@ -134,6 +133,8 @@ class RegisterViewModel :BaseObservable {
         binding?.thu?.isChecked = true
         binding?.fri?.isChecked = true
         binding?.sat?.isChecked = true
+
+
     }
 
 

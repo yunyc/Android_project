@@ -21,4 +21,6 @@ public class MemoViewModel extends ViewModel {
     public LiveData<List<Memo>> getData(MemoDao memoDao) {
         return memoDao.selectMemoList();
     }
+
+
 }

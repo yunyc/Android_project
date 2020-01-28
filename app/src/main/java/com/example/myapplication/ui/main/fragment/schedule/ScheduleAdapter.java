@@ -72,7 +72,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         String date = schedule.getStartDate();
 
         if (!dateList.contains(date)) {
-            holder.linearLayout.addView(new Layout(context, R.layout.item_schedule_date));
+            LinearLayout dateView = new Layout(context, R.layout.item_schedule_date);
+            TextView dateText = (TextView) dateView.findViewById(R.id.schedule_date);
+            dateText.setText(date);
+
+            holder.linearLayout.addView(dateView);
             dateList.add(date);
         }
         LinearLayout content = new Layout(context, R.layout.item_schedule_content);
@@ -80,6 +84,8 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         TextView scheduleTitle = (TextView) content.findViewById(R.id.memo_title);
         scheduleTitle.setText(schedule.getTitle());
 
+        scheduleTitle = (TextView) content.findViewById(R.id.schedule_content);
+        scheduleTitle.setText(schedule.getStartDate() + "~" + schedule.getEndDate());
 
         holder.linearLayout.addView(content);
 

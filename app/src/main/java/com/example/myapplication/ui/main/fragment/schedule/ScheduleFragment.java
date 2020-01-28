@@ -23,12 +23,14 @@ import java.util.List;
 
 public class ScheduleFragment extends Fragment implements View.OnClickListener {
 
-    private AppDatabase db = AppDatabase.getInstance(getContext());
+    private AppDatabase db;
     private ScheduleViewModel scheduleViewModel;
     private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
+
+        db = AppDatabase.getInstance(getContext());
 
         scheduleViewModel =
                 ViewModelProviders.of(this).get(ScheduleViewModel.class);

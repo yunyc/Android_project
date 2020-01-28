@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
-    public static String date = Calendar.YEAR + "." + Calendar.MONTH + "." + Calendar.DATE;
-    public static String time = Calendar.HOUR + "." + Calendar.MINUTE;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         //alarm.start(2);
 
         //alarm.stop(1);
+
+
 
     }
 

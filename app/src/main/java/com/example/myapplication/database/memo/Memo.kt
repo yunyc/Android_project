@@ -8,6 +8,8 @@ import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.library.baseAdapters.BR
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.myapplication.ui.main.activity.MainActivity
+import com.example.myapplication.ui.register.activity.RegisterActivity
 
 @Entity
 class Memo : BaseObservable {
@@ -16,6 +18,7 @@ class Memo : BaseObservable {
 
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
+
     @get:Bindable
     var title: String? = null
         set(value) {
@@ -30,7 +33,15 @@ class Memo : BaseObservable {
             notifyPropertyChanged(BR.content)
         }
 
-    var insertDate: String? = null
+    @get:Bindable
+    var priority: Int? = 3
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.priority)
+        }
+
+
+    var insertDate: String? = RegisterActivity.date
 
 
 

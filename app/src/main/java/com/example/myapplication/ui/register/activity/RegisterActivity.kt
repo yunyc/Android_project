@@ -29,11 +29,15 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
+    companion object {
+        var cal = Calendar.getInstance()
+        var date = cal.get(Calendar.YEAR).toString() + "년 " + cal.get(Calendar.MONTH) + 1 + "월" + cal.get(Calendar.DATE) + "일"
+        var time = cal.get(Calendar.HOUR_OF_DAY).toString() + "시 " + cal.get(Calendar.MINUTE) + "분"
+    }
 
     private var db: AppDatabase? = null
     private var binding :ActivityRegisterBinding? = null
     private var registerViewModel: RegisterViewModel? = null
-
 
     private var dateSetListner: DatePickerDialog.OnDateSetListener? = null
     private var timeSetListner: TimePickerDialog.OnTimeSetListener? = null
@@ -47,12 +51,25 @@ class RegisterActivity : AppCompatActivity() {
 
         registerViewModel = RegisterViewModel()
 
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
         binding?.register = registerViewModel
 
         registerViewModel?.activity = this
         registerViewModel?.binding = binding
         registerViewModel?.mode = intent.getStringExtra("REGISTER_MODE")
+
+        if (intent.getIntExtra("UPDATE_ID", 0) != 0) {
+
+            var id = intent.getIntExtra("UPDATE_ID", 0);
+            lifecycleScope.launch(Dispatchers.IO) {
+                registerViewModel?.memo = db!!.memoDao().selectMemo(id)
+                //registerViewModel?.alarm = db!!.alarmDao().selectMemo(id)
+                //registerViewModel?.schedule = db!!.scheduleDao().selectMemo(id)
+            }
+
+
+        }
 
         this.InitializeDateListener()
         this.InitializeTimeListener()
@@ -87,27 +104,6 @@ class RegisterActivity : AppCompatActivity() {
     fun cancel(view: View) {
         finish()
     }
-
-    fun openMenu(view: View) {
-        var menu = PopupMenu(this, view)
-        getMenuInflater().inflate(R.menu.alarm_menu, menu.menu)
-        menu.setOnMenuItemClickListener { item ->
-
-            when(item.itemId) {
-                R.id.update -> {
-
-
-                    true}
-                R.id.delete -> {true}
-                else -> {false}
-            }
-
-
-        }
-
-    }
-
-
 
 
     override fun onBackPressed() {
