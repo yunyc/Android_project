@@ -31,7 +31,6 @@ android {
     }
 
 
-
 }
 
 dependencies {
@@ -54,7 +53,6 @@ dependencies {
     kapt 'com.android.databinding:compiler:2.3.1'
     kapt "android.arch.persistence.room:compiler:1.1.1"
 }
-
 
 
 dependencies {
@@ -107,6 +105,26 @@ dependencies {
     implementation 'com.google.android.material:material:+'
     implementation 'androidx.constraintlayout:constraintlayout:+'
     implementation 'androidx.lifecycle:lifecycle-extensions:+'
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:+'
+    implementation 'androidx.constraintlayout:constraintlayout:+'
+}
+
+dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:+'
+    implementation 'androidx.lifecycle:lifecycle-extensions:+'
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:+'
+    implementation 'androidx.constraintlayout:constraintlayout:+'
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:+'
+    implementation 'androidx.constraintlayout:constraintlayout:+'
 }
 
 dependencies {

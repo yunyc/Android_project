@@ -15,6 +15,11 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_alarm"/>
 
+    <item
+        android:id="@+id/navigation_config"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="설정"/>
+
 
 
 

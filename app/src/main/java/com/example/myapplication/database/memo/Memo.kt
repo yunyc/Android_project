@@ -1,15 +1,10 @@
 package com.example.myapplication.database.memo
 
-import android.widget.EditText
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
-import androidx.databinding.BindingAdapter
-import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.library.baseAdapters.BR
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.myapplication.ui.main.activity.MainActivity
-import com.example.myapplication.ui.register.activity.RegisterActivity
 
 @Entity
 class Memo : BaseObservable {
@@ -41,7 +36,7 @@ class Memo : BaseObservable {
         }
 
 
-    var insertDate: String? = RegisterActivity.date
+    var insertDate: String? = null
 
 
 

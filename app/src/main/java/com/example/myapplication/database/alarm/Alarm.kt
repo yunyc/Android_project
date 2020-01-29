@@ -5,8 +5,6 @@ import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.myapplication.ui.main.activity.MainActivity
-import com.example.myapplication.ui.register.activity.RegisterActivity
 
 @Entity
 class Alarm :BaseObservable {
@@ -24,7 +22,7 @@ class Alarm :BaseObservable {
         }
 
     @get:Bindable
-    var alarmTime: String? = RegisterActivity.time
+    var alarmTime: String? = null
         set(value) {
             field = value
             notifyPropertyChanged(BR.alarmTime)
@@ -45,7 +43,7 @@ class Alarm :BaseObservable {
         }
 
     @get:Bindable
-    var vibration: String? = null
+    var vibration: Boolean? = null
         set(value) {
             field = value
             notifyPropertyChanged(BR.vibration)

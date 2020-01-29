@@ -7,19 +7,24 @@
 
     <fragment
         android:id="@+id/navigation_alarm"
-        android:name="com.example.myapplication.ui.main.fragment.alarm.AlarmFragment"
+        android:name="com.example.myapplication.ui.main.alarm.AlarmFragment"
         android:label="@string/title_alarm"
         tools:layout="@layout/fragment_alarm" />
 
     <fragment
         android:id="@+id/navigation_memo"
-        android:name="com.example.myapplication.ui.main.fragment.memo.MemoFragment"
+        android:name="com.example.myapplication.ui.main.memo.MemoFragment"
         android:label="@string/title_memo"
         tools:layout="@layout/fragment_memo" />
 
     <fragment
         android:id="@+id/navigation_schedule"
-        android:name="com.example.myapplication.ui.main.fragment.schedule.ScheduleFragment"
+        android:name="com.example.myapplication.ui.main.schedule.ScheduleFragment"
         android:label="@string/title_schedule"
+        tools:layout="@layout/fragment_schedule" />
+
+    <fragment
+        android:id="@+id/navigation_config"
+        android:name="com.example.myapplication.ui.main.config.ConfigFragment"
         tools:layout="@layout/fragment_schedule" />
 </navigation>

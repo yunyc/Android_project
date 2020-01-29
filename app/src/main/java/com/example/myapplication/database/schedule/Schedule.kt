@@ -8,9 +8,6 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.myapplication.database.alarm.Alarm
 import com.example.myapplication.database.memo.Memo
-import com.example.myapplication.ui.main.activity.MainActivity
-import com.example.myapplication.ui.register.activity.RegisterActivity
-import java.util.*
 
 @Entity
 class Schedule :BaseObservable {
@@ -38,28 +35,28 @@ class Schedule :BaseObservable {
         }
 
     @get:Bindable
-    var startDate: String? = RegisterActivity.date
+    var startDate: String? = null
         set(value) {
             field = value
             notifyPropertyChanged(BR.startDate)
         }
 
     @get:Bindable
-    var endDate: String? = RegisterActivity.date
+    var endDate: String? = null
         set(value) {
             field = value
             notifyPropertyChanged(BR.endDate)
         }
 
     @get:Bindable
-    var startTime: String? = RegisterActivity.time
+    var startTime: String? = null
         set(value) {
             field = value
             notifyPropertyChanged(BR.startTime)
         }
 
     @get:Bindable
-    var endTime: String? = RegisterActivity.time
+    var endTime: String? = null
         set(value) {
             field = value
             notifyPropertyChanged(BR.endTime)
